@@ -1,3 +1,30 @@
+// This will print in the wrong order.
+// We added it as an example and to test that the arrays from data.js are loaded
+
+// 🚨🚨🚨 Comment out the below code before you start working on the code
+
+// Out of sync
+  // getInstruction("mashedPotatoes", 0, (step1) => {
+  //   document.querySelector("#mashedPotatoes").innerHTML += `<li>${step1}</li>`;
+  // }, (error) => console.log(error));
+  
+  // getInstruction("mashedPotatoes", 1, (step2) => {
+  //   document.querySelector("#mashedPotatoes").innerHTML += `<li>${step2}</li>`;
+  // }, (error) => console.log(error));
+  
+  // getInstruction("mashedPotatoes", 2, (step3) => {
+  //   document.querySelector("#mashedPotatoes").innerHTML += `<li>${step3}</li>`;
+  // }, (error) => console.log(error));
+  
+  // getInstruction("mashedPotatoes", 3, (step4) => {
+  //   document.querySelector("#mashedPotatoes").innerHTML += `<li>${step4}</li>`;
+  // }, (error) => console.log(error));
+  
+  // getInstruction("mashedPotatoes", 4, (step5) => {
+  //   document.querySelector("#mashedPotatoes").innerHTML += `<li>${step5}</li>`;
+  //   document.querySelector("#mashedPotatoesImg").removeAttribute("hidden");
+  // }, (error) => console.log(error));
+
 // ---------------------------------------------------------------------------------------
 // Iteration 1 - using callbacks
 getInstruction("mashedPotatoes", 0, (step0) => {
@@ -85,3 +112,23 @@ makeBroccoli();
 
 // ---------------------------------------------------------------------------------------
 // Bonus 2 - Promise all
+const s0 = obtainInstruction("brusselsSprouts", 0);
+const s1 = obtainInstruction("brusselsSprouts", 1);
+const s2 = obtainInstruction("brusselsSprouts", 2);
+const s3 = obtainInstruction("brusselsSprouts", 3);
+const s4 = obtainInstruction("brusselsSprouts", 4);
+const s5 = obtainInstruction("brusselsSprouts", 5);
+const s6 = obtainInstruction("brusselsSprouts", 6);
+const s7 = obtainInstruction("brusselsSprouts", 7);
+
+Promise.all([s0, s1, s2, s3, s4, s5, s6, s7])
+.then((step) => {
+  step.forEach((step) => {
+    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step}</li>`;
+  });
+  document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels Sprouts are ready!</li>`;
+  document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
+})
+.catch((error) => {
+  console.log(error);
+});
